@@ -3,14 +3,15 @@ import { Footer } from "@/components/layout/footer";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Clock, User, Twitter, Linkedin, Facebook, Share2, ArrowRight } from "lucide-react";
 import { BLOG_POSTS, CARD_GRADIENTS } from "@/lib/blog-data";
+import { formatSeoTitle } from "@/lib/page-metadata-defaults";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const post = BLOG_POSTS.find(p => p.slug === params.slug);
     if (!post) return {};
-    
+
     return {
-        title: `${post.title} | Brainito Blog`,
+        title: formatSeoTitle(post.title),
         description: post.excerpt,
     };
 }

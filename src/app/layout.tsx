@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { PAGE_METADATA_DEFAULTS, SITE_URL, formatSeoTitle } from "@/lib/page-metadata-defaults";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Script from "next/script";
@@ -13,7 +14,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Brainito – Free Marketing Audit Report",
+  metadataBase: new URL(SITE_URL),
+  title: formatSeoTitle(PAGE_METADATA_DEFAULTS["/"].title),
   description:
     "Get a free AI-powered marketing audit report for your business. Discover actionable insights, grow your brand, and outperform competitors.",
 };

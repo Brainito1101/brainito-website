@@ -1,9 +1,10 @@
+import type { Metadata } from "next";
 import { LegalLayout } from "@/components/layout/legal-layout";
+import { getPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-    title: "Data & Cookie Policy | Brainito",
-    description: "Learn about how Brainito uses cookies and manages your data to provide a better user experience.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+    return getPageMetadata("/data-cookie-policy");
+}
 
 export default function DataCookiePolicyPage() {
     return (

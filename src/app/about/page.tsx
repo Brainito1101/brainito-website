@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { AboutHero } from "@/components/sections/about-hero";
@@ -5,12 +6,11 @@ import { AboutStorySection } from "@/components/sections/about-story";
 import { OurValuesSection } from "@/components/sections/our-values";
 import { OurMissionSection } from "@/components/sections/our-mission";
 import { CTABannerSection } from "@/components/sections/cta-banner";
+import { getPageMetadata } from "@/lib/seo";
 
-export const metadata = {
-    title: "About Us | Brainito",
-    description:
-        "Where AI-driven insights meet human-led execution. Learn how Brainito helps businesses grow through clarity and data.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+    return getPageMetadata("/about");
+}
 
 export default function AboutPage() {
     return (

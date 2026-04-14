@@ -11,6 +11,7 @@ import { caseStudies, getCaseStudyBySlug, getRelatedCaseStudies } from "@/lib/ca
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { CTABannerSection } from "@/components/sections/cta-banner";
+import { formatSeoTitle } from "@/lib/page-metadata-defaults";
 /* ─────────────────────────────────────────────────────────────
    Types
 ───────────────────────────────────────────────────────────── */
@@ -324,7 +325,7 @@ export async function generateMetadata({ params }: { params: Promise<PageParams>
     const data = await getStudyData(slug);
     if (!data) return {};
     return {
-        title: `${data.title} | Brainito Case Studies`,
+        title: formatSeoTitle(data.title),
         description: data.subtitle,
     };
 }

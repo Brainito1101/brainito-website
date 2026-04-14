@@ -1,8 +1,14 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { TermsOfServiceHero } from "@/components/sections/terms-of-service-hero";
 import { AcceptableUseContent } from "@/components/sections/acceptable-use-content";
 import { CTABannerSection } from "@/components/sections/cta-banner";
+import { getPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata(): Promise<Metadata> {
+    return getPageMetadata("/acceptable-use-anti-spam-policy");
+}
 
 export default function AcceptableUsePage() {
   return (

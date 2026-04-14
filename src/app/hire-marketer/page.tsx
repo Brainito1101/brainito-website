@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { HireMarketerHeroSection } from "@/components/sections/hire-marketer-hero";
@@ -12,6 +13,11 @@ import { CTABannerSection } from "@/components/sections/cta-banner";
 import { FAQSection } from "@/components/sections/faq";
 import { LetUsGrowSection } from "@/components/sections/let-us-grow";
 import { WhatMarketerHandles } from "@/components/sections/what-marketer-handle";
+import { getPageMetadata } from "@/lib/seo";
+
+export async function generateMetadata(): Promise<Metadata> {
+    return getPageMetadata("/hire-marketer");
+}
 
 export default function HireMarketerPage() {
     return (
