@@ -10,6 +10,7 @@ import { useAuth } from "@/contexts/auth-context";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { AuthModal } from "@/components/sections/auth-modal";
+import { stripePaymentLinkForHomePricingPlanId } from "@/lib/stripe-payment-links";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://app.brainito.com/api";
 const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://app.brainito.com";
@@ -141,6 +142,12 @@ export function PricingSection() {
             return;
         }
 
+        const paymentLink = stripePaymentLinkForHomePricingPlanId(plan.id);
+        if (paymentLink && !user) {
+            window.location.href = paymentLink;
+            return;
+        }
+
         if (!user) {
             setShowAuthModal(true);
             return;
@@ -176,9 +183,15 @@ export function PricingSection() {
             } finally {
                 setProcessingPlan(null);
             }
-        } else {
-            router.push("/contact");
+            return;
         }
+
+        if (paymentLink) {
+            window.location.href = paymentLink;
+            return;
+        }
+
+        router.push("/contact");
     };
 
     return (

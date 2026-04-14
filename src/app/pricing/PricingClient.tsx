@@ -17,6 +17,7 @@ import { Container } from "@/components/ui/section";
 import { AnimatedText } from "@/components/ui/animated-button";
 import { cn } from "@/lib/utils";
 import { CTABannerSection } from "@/components/sections/cta-banner";
+import { stripePaymentLinkForPlanName } from "@/lib/stripe-payment-links";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://app.brainito.com/api";
 
@@ -188,6 +189,12 @@ export function PricingClient() {
             return;
         }
 
+        const paymentLink = stripePaymentLinkForPlanName(plan.name);
+        if (paymentLink && !user) {
+            window.location.href = paymentLink;
+            return;
+        }
+
         if (!user) {
             setShowAuthModal(true);
             return;
@@ -217,7 +224,15 @@ export function PricingClient() {
             } finally {
                 setProcessingPlan(null);
             }
+            return;
         }
+
+        if (paymentLink) {
+            window.location.href = paymentLink;
+            return;
+        }
+
+        toast.error("Checkout is not available for this plan right now. Please try again later or contact support.");
     };
 
     return (
