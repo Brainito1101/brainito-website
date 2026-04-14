@@ -32,12 +32,9 @@ const values = [
 ];
 
 export function OurValuesSection() {
-    const topRow = values.slice(0, 3);
-    const bottomRow = values.slice(3);
-
     return (
         <section className="py-24 bg-white overflow-hidden">
-            <Container className="max-w-[1600px]">
+            <Container className="max-w-[1600px] px-3 sm:px-5 md:px-8">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <motion.h2
@@ -59,9 +56,9 @@ export function OurValuesSection() {
                     </motion.p>
                 </div>
 
-                <div className="w-full mx-auto px-4">
+                <div className="mx-auto w-full">
                     {/* Grid of values */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                         {values.map((value, index) => (
                             <ValueCard key={value.title} value={value} index={index} />
                         ))}
@@ -79,7 +76,7 @@ function ValueCard({ value, index }: { value: (typeof values)[0]; index: number 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.08 }}
-            className="bg-white rounded-xl border border-gray-200 px-8 py-5 flex items-start gap-5 hover:bg-[#fcf8ff] transition-all duration-300 group"
+            className="flex items-start gap-4 rounded-xl border border-gray-200 bg-white px-5 py-5 transition-all duration-300 group hover:bg-[#fcf8ff] sm:gap-5 sm:px-6 md:px-8"
         >
             {/* Icon Container */}
             <div className="flex-shrink-0 w-20 h-20 flex items-center justify-center">

@@ -40,18 +40,11 @@ export function HeroSection() {
     return (
         <section
             id="hero"
+            className="relative flex min-h-0 flex-col items-center justify-center overflow-hidden pt-[140px] pb-4 md:min-h-screen md:pb-[60px]"
             style={{
                 /* White at top, purple glow in the middle, white at bottom */
-                background: "linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 20%, #F4EEFF 50%, #FAF5FF 80%, #FFFFFF 100%)",
-                minHeight: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                overflow: "hidden",
-                paddingTop: "80px",
-                paddingBottom: "60px",
+                background:
+                    "linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 20%, #F4EEFF 50%, #FAF5FF 80%, #FFFFFF 100%)",
             }}
         >
             <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
@@ -60,13 +53,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                style={{
-                    position: "absolute",
-                    left: "150px",
-                    bottom: "100px",
-                    width: "clamp(120px, 18vw, 280px)",
-                    pointerEvents: "none",
-                }}
+                className="pointer-events-none absolute bottom-[100px] left-[150px] hidden w-[clamp(120px,18vw,280px)] md:block"
             >
                 <Image
                     src="/vectors/1.svg"
@@ -83,13 +70,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                style={{
-                    position: "absolute",
-                    right: "180px",
-                    bottom: "60px",
-                    width: "clamp(140px, 20vw, 300px)",
-                    pointerEvents: "none",
-                }}
+                className="pointer-events-none absolute bottom-[60px] right-[180px] hidden w-[clamp(140px,20vw,300px)] md:block"
             >
                 <Image
                     src="/vectors/8.svg"
@@ -101,32 +82,11 @@ export function HeroSection() {
             </motion.div>
 
             {/* ── Centre content ───────────────────────────────────── */}
-            <div
-                style={{
-                    position: "relative",
-                    zIndex: 10,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    textAlign: "center",
-                    width: "100%",
-                    maxWidth: "1000px",
-                    padding: "0 24px",
-                }}
-            >
+            <div className="relative z-10 flex w-full max-w-[1000px] flex-col items-center px-4 text-center sm:px-6">
                 {/* Heading */}
                 <motion.h1
                     {...fadeUp(0.05)}
-                    style={{
-                        fontFamily: "var(--font-poppins), ui-sans-serif",
-                        fontSize: "clamp(32px, 5vw, 75px)",
-                        fontWeight: 500,
-                        lineHeight: 1.12,
-                        color: "#101011",
-                        marginBottom: "18px",
-                        letterSpacing: "-0.5px",
-                        whiteSpace: "nowrap",
-                    }}
+                    className="mb-[18px] whitespace-normal text-[clamp(42px,6.5vw,75px)] font-medium leading-[1.12] tracking-[-0.5px] text-[#101011] [font-family:var(--font-poppins),ui-sans-serif] md:text-[clamp(32px,5vw,75px)] md:whitespace-nowrap"
                 >
                     <span
                         className="bg-clip-text text-transparent bg-gradient-to-r from-[#71389A] to-[#CB84FF]"
@@ -139,15 +99,7 @@ export function HeroSection() {
                 {/* Subtitle */}
                 <motion.p
                     {...fadeUp(0.15)}
-                    style={{
-                        fontFamily: "var(--font-poppins), ui-sans-serif",
-                        fontSize: "clamp(16px, 2.5vw, 28px)",
-                        fontWeight: 400,
-                        color: "#606266",
-                        lineHeight: 1.6,
-                        marginBottom: "36px",
-                        maxWidth: "600px",
-                    }}
+                    className="mb-9 max-w-[600px] text-[clamp(19px,3.5vw,28px)] font-normal leading-[1.6] text-[#606266] [font-family:var(--font-poppins),ui-sans-serif] md:text-[clamp(16px,2.5vw,28px)]"
                 >
                     <span style={{ color: "#101011" }}>Data - driven</span> website insights and audit{" "}
                     <br className="hidden sm:block" />
@@ -157,34 +109,10 @@ export function HeroSection() {
                 {/* ── Input + Button Row ───────────────────────────── */}
                 <motion.div
                     {...fadeUp(0.25)}
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "12px",
-                        width: "100%",
-                        maxWidth: "700px",
-                        marginBottom: "14px",
-                        flexWrap: "wrap",
-                        justifyContent: "center",
-                    }}
+                    className="mb-3.5 flex w-full max-w-[700px] flex-col items-stretch gap-3 md:max-w-[700px] md:flex-row md:flex-wrap md:items-center md:justify-center"
                 >
                     {/* Website input */}
-                    <div
-                        style={{
-                            flex: "1 1 180px",
-                            minWidth: "160px",
-                            maxWidth: "270px",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "10px",
-                            height: "56px",
-                            borderRadius: "9999px",
-                            border: "2px solid #9B72C0",
-                            background: "rgba(255,255,255,0.92)",
-                            padding: "0 15px",
-                            boxShadow: "0 2px 12px rgba(113,56,154,0.07)",
-                        }}
-                    >
+                    <div className="flex h-14 w-full min-w-0 shrink-0 items-center gap-2.5 rounded-full border-2 border-[#9B72C0] bg-white/92 px-[15px] shadow-[0_2px_12px_rgba(113,56,154,0.07)] md:w-auto md:max-w-[270px] md:flex-[1_1_180px] md:min-w-[160px]">
                         <Globe
                             size={16}
                             style={{ color: "#9B72C0", flexShrink: 0 }}
@@ -208,22 +136,7 @@ export function HeroSection() {
                     </div>
 
                     {/* Email input */}
-                    <div
-                        style={{
-                            flex: "1 1 180px",
-                            minWidth: "160px",
-                            maxWidth: "320px",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "10px",
-                            height: "56px",
-                            borderRadius: "9999px",
-                            border: "2px solid #9B72C0",
-                            background: "rgba(255,255,255,0.92)",
-                            padding: "0 15px",
-                            boxShadow: "0 2px 12px rgba(113,56,154,0.07)",
-                        }}
-                    >
+                    <div className="flex h-14 w-full min-w-0 shrink-0 items-center gap-2.5 rounded-full border-2 border-[#9B72C0] bg-white/92 px-[15px] shadow-[0_2px_12px_rgba(113,56,154,0.07)] md:w-auto md:max-w-[320px] md:flex-[1_1_180px] md:min-w-[160px]">
                         <Mail
                             size={16}
                             style={{ color: "#9B72C0", flexShrink: 0 }}
@@ -246,13 +159,13 @@ export function HeroSection() {
                         />
                     </div>
 
-                    <div style={{ flexShrink: 0, position: "relative", zIndex: 1 }}>
+                    <div className="relative z-[1] w-full shrink-0 md:w-auto">
                         <ActionButton
                             type="button"
                             onClick={handleSubmit}
                             disabled={analysisLoading}
                             aria-busy={analysisLoading}
-                            className="min-w-[160px] sm:min-w-[160px] disabled:opacity-60 disabled:cursor-wait"
+                            className="w-full min-w-0 disabled:cursor-wait disabled:opacity-60 md:min-w-[160px] md:w-auto"
                         >
                             {analysisLoading ? "Redirecting…" : "Get Started"}
                         </ActionButton>
@@ -263,14 +176,7 @@ export function HeroSection() {
                             initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
                             animate={{ opacity: 1, scale: 1, rotate: 0 }}
                             transition={{ duration: 0.6, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                            style={{
-                                position: "absolute",
-                                top: "110%",
-                                left: "75%",
-                                width: "clamp(90px, 12vw, 70px)",
-                                pointerEvents: "none",
-                                zIndex: -1,
-                            }}
+                            className="pointer-events-none absolute left-[75%] top-[110%] z-[-1] hidden w-[clamp(90px,12vw,70px)] md:block"
                         >
                             <Image
                                 src="/vectors/10.svg"
@@ -286,12 +192,7 @@ export function HeroSection() {
                 {/* Login hint */}
                 <motion.p
                     {...fadeUp(0.35)}
-                    style={{
-                        fontFamily: "var(--font-poppins), ui-sans-serif",
-                        fontSize: "16px",
-                        color: "#606266",
-                        marginBottom: "80px",
-                    }}
+                    className="mb-10 text-base text-[#606266] [font-family:var(--font-poppins),ui-sans-serif] md:mb-20"
                 >
                     <button
                         type="button"
@@ -317,23 +218,7 @@ export function HeroSection() {
                 {/* Trusted badge */}
                 <motion.div
                     {...fadeUp(0.45)}
-                    style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "6px",
-                        height: "42px",
-                        paddingLeft: "22px",
-                        paddingRight: "22px",
-                        borderRadius: "9999px",
-                        border: "1.5px solid #c8b8e0",
-                        background: "rgba(255,255,255,0.70)",
-                        backdropFilter: "blur(6px)",
-                        fontFamily: "var(--font-poppins), ui-sans-serif",
-                        fontSize: "13px",
-                        fontWeight: 400,
-                        color: "#101011",
-                        whiteSpace: "nowrap",
-                    }}
+                    className="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border-[1.5px] border-[#c8b8e0] bg-white/70 px-4 py-2 text-center text-[13px] font-normal text-[#101011] [font-family:var(--font-poppins),ui-sans-serif] backdrop-blur-[6px] md:h-[42px] md:max-w-none md:flex-nowrap md:gap-1.5 md:whitespace-nowrap md:px-[22px] md:py-0"
                 >
                     Trusted by{" "}
                     <span style={{ color: "#71389A", fontWeight: 600 }}>1700+</span>{" "}

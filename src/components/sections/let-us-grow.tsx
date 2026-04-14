@@ -91,7 +91,7 @@ export function LetUsGrowSection() {
 
     return (
         <section className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 50%, #FFFFFF 100%)" }}>
-            <Container className="max-w-[800px] relative z-10">
+            <Container className="relative z-10 max-w-[800px] min-w-0">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -125,28 +125,22 @@ export function LetUsGrowSection() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.1, duration: 0.5 }}
                 >
-                    <div
-                        style={{
-                            backgroundColor: "#FFFFFF",
-                            borderRadius: "24px",
-                            padding: "40px",
-                            boxShadow: "0 10px 40px rgba(0,0,0,0.06)",
-                            border: "1px solid rgba(0,0,0,0.04)",
-                        }}
-                    >
-                        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "32px" }}>
-                            <div style={{ width: "40px", height: "40px", borderRadius: "50%", backgroundColor: "#71389A", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <div className="min-w-0 rounded-2xl border border-black/5 bg-white p-5 shadow-[0_10px_40px_rgba(0,0,0,0.06)] sm:rounded-[24px] sm:p-8 md:p-10">
+                        <div className="mb-6 flex items-start gap-3 sm:mb-8 sm:items-center sm:gap-4">
+                            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#71389A] sm:h-10 sm:w-10">
                                 <FileText size={20} color="#FFFFFF" />
                             </div>
-                            <h2 style={{ fontFamily: "var(--font-poppins)", fontSize: "20px", fontWeight: 500, color: "#111827" }}>
+                            <h2 className="min-w-0 text-left font-poppins text-[16px] font-medium leading-snug text-gray-900 sm:text-[18px] md:text-[20px]">
                                 Request a Free Strategy Discussion
                             </h2>
                         </div>
 
-                        <form style={{ display: "flex", flexDirection: "column", gap: "20px" }} onSubmit={handleSubmit}>
-                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-                                <div>
-                                    <label style={{ display: "block", fontFamily: "var(--font-poppins)", fontSize: "13px", fontWeight: 500, color: "#4B5563", marginBottom: "8px" }}>Full Name*</label>
+                        <form className="flex min-w-0 flex-col gap-4 sm:gap-5" onSubmit={handleSubmit}>
+                            <div className="grid min-w-0 grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2">
+                                <div className="min-w-0">
+                                    <label className="mb-1.5 block font-poppins text-[12px] font-medium text-[#4B5563] sm:mb-2 sm:text-[13px]">
+                                        Full Name*
+                                    </label>
                                     <input
                                         type="text"
                                         name="full_name"
@@ -154,21 +148,13 @@ export function LetUsGrowSection() {
                                         placeholder="Full name"
                                         value={formData.full_name}
                                         onChange={handleChange}
-                                        style={{
-                                            width: "100%",
-                                            height: "48px",
-                                            borderRadius: "99px",
-                                            backgroundColor: "#F3F4F6",
-                                            border: "1px solid transparent",
-                                            padding: "0 24px",
-                                            fontFamily: "var(--font-poppins)",
-                                            fontSize: "14px",
-                                            outline: "none",
-                                        }}
+                                        className="h-11 w-full min-w-0 rounded-full border border-transparent bg-[#F3F4F6] px-4 font-poppins text-sm outline-none sm:h-12 sm:px-6"
                                     />
                                 </div>
-                                <div>
-                                    <label style={{ display: "block", fontFamily: "var(--font-poppins)", fontSize: "13px", fontWeight: 500, color: "#4B5563", marginBottom: "8px" }}>Phone*</label>
+                                <div className="min-w-0">
+                                    <label className="mb-1.5 block font-poppins text-[12px] font-medium text-[#4B5563] sm:mb-2 sm:text-[13px]">
+                                        Phone*
+                                    </label>
                                     <input
                                         type="tel"
                                         name="phone"
@@ -176,24 +162,16 @@ export function LetUsGrowSection() {
                                         placeholder="Phone number"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        style={{
-                                            width: "100%",
-                                            height: "48px",
-                                            borderRadius: "99px",
-                                            backgroundColor: "#F3F4F6",
-                                            border: "1px solid transparent",
-                                            padding: "0 24px",
-                                            fontFamily: "var(--font-poppins)",
-                                            fontSize: "14px",
-                                            outline: "none",
-                                        }}
+                                        className="h-11 w-full min-w-0 rounded-full border border-transparent bg-[#F3F4F6] px-4 font-poppins text-sm outline-none sm:h-12 sm:px-6"
                                     />
                                 </div>
                             </div>
 
-                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-                                <div>
-                                    <label style={{ display: "block", fontFamily: "var(--font-poppins)", fontSize: "13px", fontWeight: 500, color: "#4B5563", marginBottom: "8px" }}>Business Email*</label>
+                            <div className="grid min-w-0 grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2">
+                                <div className="min-w-0">
+                                    <label className="mb-1.5 block font-poppins text-[12px] font-medium text-[#4B5563] sm:mb-2 sm:text-[13px]">
+                                        Business Email*
+                                    </label>
                                     <input
                                         type="email"
                                         name="email"
@@ -201,46 +179,30 @@ export function LetUsGrowSection() {
                                         placeholder="john@company.com"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        style={{
-                                            width: "100%",
-                                            height: "48px",
-                                            borderRadius: "99px",
-                                            backgroundColor: "#F3F4F6",
-                                            border: "1px solid transparent",
-                                            padding: "0 24px",
-                                            fontFamily: "var(--font-poppins)",
-                                            fontSize: "14px",
-                                            outline: "none",
-                                        }}
+                                        className="h-11 w-full min-w-0 rounded-full border border-transparent bg-[#F3F4F6] px-4 font-poppins text-sm outline-none sm:h-12 sm:px-6"
                                     />
                                 </div>
-                                <div>
-                                    <label style={{ display: "block", fontFamily: "var(--font-poppins)", fontSize: "13px", fontWeight: 500, color: "#4B5563", marginBottom: "8px" }}>Website / App URL</label>
+                                <div className="min-w-0">
+                                    <label className="mb-1.5 block font-poppins text-[12px] font-medium text-[#4B5563] sm:mb-2 sm:text-[13px]">
+                                        Website / App URL
+                                    </label>
                                     <input
                                         type="url"
                                         name="website"
                                         placeholder="https://yourcompany.com"
                                         value={formData.website}
                                         onChange={handleChange}
-                                        style={{
-                                            width: "100%",
-                                            height: "48px",
-                                            borderRadius: "99px",
-                                            backgroundColor: "#F3F4F6",
-                                            border: "1px solid transparent",
-                                            padding: "0 24px",
-                                            fontFamily: "var(--font-poppins)",
-                                            fontSize: "14px",
-                                            outline: "none",
-                                        }}
+                                        className="h-11 w-full min-w-0 rounded-full border border-transparent bg-[#F3F4F6] px-4 font-poppins text-sm outline-none sm:h-12 sm:px-6"
                                     />
                                 </div>
                             </div>
 
-                            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-                                <div>
-                                    <label style={{ display: "block", fontFamily: "var(--font-poppins)", fontSize: "13px", fontWeight: 500, color: "#4B5563", marginBottom: "8px" }}>Monthly Budget</label>
-                                    <div style={{ position: "relative" }}>
+                            <div className="grid min-w-0 grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2">
+                                <div className="min-w-0">
+                                    <label className="mb-1.5 block font-poppins text-[12px] font-medium text-[#4B5563] sm:mb-2 sm:text-[13px]">
+                                        Monthly Budget
+                                    </label>
+                                    <div className="relative min-w-0">
                                         <CustomSelect
                                             options={budgetOptions}
                                             placeholder="Select budget"
@@ -249,9 +211,11 @@ export function LetUsGrowSection() {
                                         />
                                     </div>
                                 </div>
-                                <div>
-                                    <label style={{ display: "block", fontFamily: "var(--font-poppins)", fontSize: "13px", fontWeight: 500, color: "#4B5563", marginBottom: "8px" }}>#1 Challenge</label>
-                                    <div style={{ position: "relative" }}>
+                                <div className="min-w-0">
+                                    <label className="mb-1.5 block font-poppins text-[12px] font-medium text-[#4B5563] sm:mb-2 sm:text-[13px]">
+                                        #1 Challenge
+                                    </label>
+                                    <div className="relative min-w-0">
                                         <CustomSelect
                                             options={challengeOptions}
                                             placeholder="Select challenge"
@@ -263,36 +227,42 @@ export function LetUsGrowSection() {
                             </div>
 
                             {formData.challenge === "other" && (
-                                <div>
-                                    <label style={{ display: "block", fontFamily: "var(--font-poppins)", fontSize: "13px", fontWeight: 500, color: "#4B5563", marginBottom: "8px" }}>Describe your challenge</label>
+                                <div className="min-w-0">
+                                    <label className="mb-1.5 block font-poppins text-[12px] font-medium text-[#4B5563] sm:mb-2 sm:text-[13px]">
+                                        Describe your challenge
+                                    </label>
                                     <input
                                         type="text"
                                         name="other_challenge"
                                         placeholder="Describe your challenge..."
                                         value={formData.other_challenge}
                                         onChange={handleChange}
-                                        style={{
-                                            width: "100%",
-                                            height: "48px",
-                                            borderRadius: "99px",
-                                            backgroundColor: "#F3F4F6",
-                                            border: "1px solid transparent",
-                                            padding: "0 24px",
-                                            fontFamily: "var(--font-poppins)",
-                                            fontSize: "14px",
-                                            outline: "none",
-                                        }}
+                                        className="h-11 w-full min-w-0 rounded-full border border-transparent bg-[#F3F4F6] px-4 font-poppins text-sm outline-none sm:h-12 sm:px-6"
                                     />
                                 </div>
                             )}
 
                             <ActionButton
-                                className="w-full mt-3"
+                                className="mt-2 w-full min-w-0 gap-2 px-4 sm:mt-3 sm:gap-3 sm:px-6 md:px-8"
+                                textClassName="whitespace-nowrap text-[13px] leading-tight sm:text-sm md:text-[17px] md:leading-normal"
                                 type="submit"
                                 disabled={loading}
-                                icon={loading ? <Loader2 className="animate-spin" size={18} /> : <ArrowUpRight size={18} />}
+                                icon={
+                                    loading ? (
+                                        <Loader2 className="size-4 shrink-0 animate-spin sm:size-[18px]" />
+                                    ) : (
+                                        <ArrowUpRight className="size-4 shrink-0 sm:size-[18px]" />
+                                    )
+                                }
                             >
-                                {loading ? "Submitting..." : "Request Strategy Discussion"}
+                                {loading ? (
+                                    <span className="whitespace-nowrap">Submitting…</span>
+                                ) : (
+                                    <>
+                                        <span className="md:hidden">Book strategy call</span>
+                                        <span className="hidden md:inline">Request Strategy Discussion</span>
+                                    </>
+                                )}
                             </ActionButton>
                         </form>
                     </div>

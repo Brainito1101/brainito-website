@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useSyncExternalStore } from "react";
 import { motion, useInView } from "framer-motion";
 import { Container } from "@/components/ui/section";
 import Image from "next/image";
@@ -103,6 +103,20 @@ function LaptopMockup({ items, activeId }: { items: StoryItem[]; activeId: numbe
     );
 }
 
+/** Tailwind `md` is 768px — true when layout is mobile column (no sticky timeline). */
+function useIsBelowMd() {
+    return useSyncExternalStore(
+        (onStoreChange) => {
+            if (typeof window === "undefined") return () => {};
+            const mq = window.matchMedia("(max-width: 767px)");
+            mq.addEventListener("change", onStoreChange);
+            return () => mq.removeEventListener("change", onStoreChange);
+        },
+        () => (typeof window !== "undefined" ? window.matchMedia("(max-width: 767px)").matches : false),
+        () => false
+    );
+}
+
 function TimelineDecor() {
     return (
         <>
@@ -195,6 +209,8 @@ function TimelineStoryBlock({
 
 export function AboutStorySection() {
     const [activeId, setActiveId] = useState(1);
+    const isBelowMd = useIsBelowMd();
+    const headerMotionInitial = isBelowMd ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 };
 
     return (
         <section className="relative bg-white py-24">
@@ -203,24 +219,36 @@ export function AboutStorySection() {
 
             <Container>
                 {/* Header */}
-                <div className="relative z-10 mx-auto mb-20 max-w-3xl text-center md:mb-32">
+                <div className="relative z-10 mx-auto mb-16 max-w-3xl px-1 text-center sm:px-0 md:mb-32">
                     <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={headerMotionInitial}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="mb-5 text-[34px] font-semibold tracking-tight text-[#101011] md:text-5xl"
-                        style={{ lineHeight: 1.25 }}
+                        className="mb-5 font-semibold tracking-tight text-[#101011] md:text-5xl md:leading-[1.15]"
                     >
-                        <span className="text-[#A359D9]">One mistake</span> shaped
-                        <br className="hidden md:block" />
-                        everything we do today
+                        {/* Mobile: two-line stack so “One mistake” stays prominent and the rest reads cleanly */}
+                        <span className="flex flex-col items-center gap-2 text-balance md:hidden">
+                            <span className="text-[clamp(28px,7.5vw,36px)] leading-[1.12]">
+                                <span className="text-[#A359D9]">One mistake</span>
+                                <span className="text-[#101011]"> shaped</span>
+                            </span>
+                            <span className="text-balance text-[clamp(22px,5.8vw,28px)] font-semibold leading-[1.22] text-[#101011]">
+                                everything we do today
+                            </span>
+                        </span>
+                        {/* Desktop: original break after “shaped” */}
+                        <span className="hidden md:block">
+                            <span className="text-[#A359D9]">One mistake</span> shaped
+                            <br />
+                            everything we do today
+                        </span>
                     </motion.h2>
                     <motion.p
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={headerMotionInitial}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="mx-auto max-w-[600px] text-[16px] leading-relaxed text-[#606266] opacity-90 md:text-[17px]"
+                        transition={{ delay: isBelowMd ? 0 : 0.1 }}
+                        className="mx-auto max-w-[600px] text-[16px] leading-relaxed text-[#606266] md:text-[17px] md:opacity-90"
                     >
                         You want to grow your business. You&apos;re motivated by impact and purpose. And you want your marketing to make a difference. We want
                         the same thing.
@@ -249,10 +277,7 @@ export function AboutStorySection() {
                                         </button>
                                     </div>
                                     {item.id === 1 && <LaptopMockup items={section1Items} activeId={activeId} />}
-                                    <div
-                                        className={`mt-8 transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-40"}`}
-                                        onMouseEnter={() => setActiveId(item.id)}
-                                    >
+                                    <div className="mt-8" onMouseEnter={() => setActiveId(item.id)}>
                                         <h3 className="mb-3 text-xl font-semibold text-[#A359D9]">{item.yearTitle}</h3>
                                         <h4 className="mb-3 text-lg font-medium text-[#101011]">{item.subtitle}</h4>
                                         <p className="text-[15px] leading-relaxed text-[#606266]">{item.description}</p>
@@ -306,10 +331,7 @@ export function AboutStorySection() {
                                         </button>
                                     </div>
                                     {item.id === 4 && <LaptopMockup items={section2Items} activeId={activeId} />}
-                                    <div
-                                        className={`mt-8 transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-40"}`}
-                                        onMouseEnter={() => setActiveId(item.id)}
-                                    >
+                                    <div className="mt-8" onMouseEnter={() => setActiveId(item.id)}>
                                         <h3 className="mb-3 text-xl font-semibold text-[#A359D9]">{item.yearTitle}</h3>
                                         <h4 className="mb-3 text-lg font-medium text-[#101011]">{item.subtitle}</h4>
                                         <p className="text-[15px] leading-relaxed text-[#606266]">{item.description}</p>

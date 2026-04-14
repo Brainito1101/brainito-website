@@ -18,7 +18,7 @@ const BRAND_LOGO_URLS = [
 
 export function BrandsSection() {
     return (
-        <section className="pt-24 pb-12 bg-white">
+        <section className="bg-white pb-12 pt-8 md:pt-24">
             <Container>
                 {/* ── Logos Marquee ──────────────────────────────────── */}
                 <motion.div

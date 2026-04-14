@@ -30,10 +30,10 @@ export function Footer() {
                         <Link href="/" className="mb-6 inline-block">
                             <Image
                                 src="/brainito-logo.svg"
-                                alt="Brainito Logo"
+                                alt="Brainito"
                                 width={230}
                                 height={55}
-                                className="h-13 w-auto mix-blend-multiply"
+                                className="h-9 w-auto max-w-[200px] object-contain object-left mix-blend-multiply md:h-10"
                             />
                         </Link>
 

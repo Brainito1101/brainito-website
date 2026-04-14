@@ -32,7 +32,7 @@ const testimonialsCol1 = [
         role: "Founder, TheBreathCoachSchool.com",
         text: "Clear, effective, and delivered exactly as expected. The value was evident from the start.",
         rating: 5,
-        image: "https://i.pravatar.cc/150?u=sarah",
+        image: "https://i.pravatar.cc/150?u=marcus",
     },
 ];
 
@@ -63,13 +63,9 @@ const testimonialsCol2 = [
         role: "Founder, TheHourlyAdvisor.com",
         text: "Detailed, practical, and highly informative. The guidance provided strong direction for long-term strategic planning.",
         rating: 5,
-        image: "https://i.pravatar.cc/150?u=marcus",
+        image: "https://i.pravatar.cc/150?u=sarah",
     },
 ];
-
-// Helper to duplicate items for infinite scroll effect
-const col1Items = [...testimonialsCol1, ...testimonialsCol1, ...testimonialsCol1];
-const col2Items = [...testimonialsCol2, ...testimonialsCol2, ...testimonialsCol2];
 
 function StarRating({ rating }: { rating: number }) {
     return (
@@ -118,7 +114,7 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
 
 export function TestimonialsSection() {
     return (
-        <section id="testimonials" className="py-24 bg-white overflow-hidden relative">
+        <section id="testimonials" className="bg-white overflow-hidden relative pt-4 pb-24 md:pt-12 lg:pt-20">
             <Container className="max-w-7xl">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
@@ -170,19 +166,32 @@ export function TestimonialsSection() {
                     </motion.div>
 
                     {/* Right Scrolling Columns */}
-                    <div className="h-[650px] lg:h-[750px] relative overflow-hidden flex gap-6 lg:gap-8 mt-10 lg:mt-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] lg:col-span-8">
-                        {/* Column 1 (Scrolling Up) */}
-                        <div className="flex-1 flex flex-col gap-4 animate-marquee-up will-change-transform pt-6">
-                            {col1Items.map((testimonial, i) => (
-                                <TestimonialCard key={`col1-${i}`} testimonial={testimonial} />
-                            ))}
+                    <div className="h-[650px] lg:h-[750px] relative overflow-hidden flex gap-8 lg:gap-10 items-start mt-10 lg:mt-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] lg:col-span-8">
+                        {/* Same pb on each strip as gap between cards so the strip boundary does not look “stuck together”; -50% still matches one full strip. */}
+                        <div className="flex-1 flex flex-col animate-marquee-up will-change-transform pt-6 min-w-0 [backface-visibility:hidden]">
+                            <div className="flex flex-col gap-8 pb-8">
+                                {testimonialsCol1.map((testimonial, i) => (
+                                    <TestimonialCard key={`col1-a-${i}`} testimonial={testimonial} />
+                                ))}
+                            </div>
+                            <div className="flex flex-col gap-8 pb-8">
+                                {testimonialsCol1.map((testimonial, i) => (
+                                    <TestimonialCard key={`col1-b-${i}`} testimonial={testimonial} />
+                                ))}
+                            </div>
                         </div>
 
-                        {/* Column 2 (Scrolling Down) */}
-                        <div className="flex-1 flex flex-col gap-4 animate-marquee-down will-change-transform -mt-[300px]">
-                            {col2Items.map((testimonial, i) => (
-                                <TestimonialCard key={`col2-${i}`} testimonial={testimonial} />
-                            ))}
+                        <div className="flex-1 flex flex-col animate-marquee-down will-change-transform -mt-[300px] min-w-0 [backface-visibility:hidden]">
+                            <div className="flex flex-col gap-8 pb-8">
+                                {testimonialsCol2.map((testimonial, i) => (
+                                    <TestimonialCard key={`col2-a-${i}`} testimonial={testimonial} />
+                                ))}
+                            </div>
+                            <div className="flex flex-col gap-8 pb-8">
+                                {testimonialsCol2.map((testimonial, i) => (
+                                    <TestimonialCard key={`col2-b-${i}`} testimonial={testimonial} />
+                                ))}
+                            </div>
                         </div>
                     </div>
 

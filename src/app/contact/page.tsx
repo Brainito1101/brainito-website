@@ -15,7 +15,9 @@ export default function ContactPage() {
       <Navbar />
       <main className="pt-16">
         <ContactSection />
-        <CTABannerSection />
+        <div className="max-md:-mt-4 md:mt-0">
+          <CTABannerSection />
+        </div>
       </main>
       <Footer />
     </>

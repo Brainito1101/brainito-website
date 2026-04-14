@@ -1,10 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/section";
 import { AnimatedText, AnimatedIcon } from "@/components/ui/animated-button";
-import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 
 const leftFeatures = [
@@ -28,8 +26,6 @@ const rightFeatures = [
 ];
 
 export function HireMarketerPricingSection() {
-    const [isYearly, setIsYearly] = useState(false);
-
     return (
         <section id="pricing-marketer" className="py-24 bg-white relative">
             <Container className="max-w-[1100px]">
@@ -58,34 +54,6 @@ export function HireMarketerPricingSection() {
                         A single monthly price with a friction-free working structure.
                     </p>
                 </motion.div>
-
-                {/* Toggle */}
-                <div className="flex items-center justify-center gap-4 mb-14">
-                    <span
-                        className={cn("text-[14px]", !isYearly ? "text-[#101011] font-medium" : "text-[#606266]")}
-                        style={{ fontFamily: "var(--font-poppins), ui-sans-serif" }}
-                    >
-                        Monthly
-                    </span>
-                    <button
-                        onClick={() => setIsYearly(!isYearly)}
-                        className="w-12 h-6 bg-[#f2e6ff] rounded-full flex items-center p-1 relative transition-colors duration-300 focus:outline-none"
-                        aria-label="Toggle annual billing"
-                    >
-                        <motion.div
-                            layout
-                            className="w-4 h-4 bg-[#71389A] rounded-full absolute"
-                            animate={{ left: isYearly ? "26px" : "4px" }}
-                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                        />
-                    </button>
-                    <span
-                        className={cn("text-[14px]", isYearly ? "text-[#101011]" : "text-[#606266]")}
-                        style={{ fontFamily: "var(--font-poppins), ui-sans-serif" }}
-                    >
-                        yearly <span className="text-[#71389A] ml-1">30%off</span>
-                    </span>
-                </div>
 
                 {/* Cards Grid */}
                 <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
@@ -121,7 +89,7 @@ export function HireMarketerPricingSection() {
                                         letterSpacing: "-2px",
                                     }}
                                 >
-                                    ${isYearly ? "2,099" : "2,999"}
+                                    $2,999
                                 </span>
                                 <span
                                     className="text-[#606266]"

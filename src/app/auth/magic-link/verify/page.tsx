@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { useAuth } from "@/contexts/auth-context";
+import { consumePendingPostLoginDashboardPath } from "@/lib/post-login-redirect";
 
 // API base URL
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "https://app.brainito.com/api";
@@ -55,7 +56,8 @@ function VerifyContent() {
 
                         const pendingWebsite = searchParams.get('pendingWebsite');
                         const dashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://app.brainito.com";
-                        let redirectUrl = `${dashboardUrl}/dashboard?auth=${tokenData}`;
+                        const postLoginPath = consumePendingPostLoginDashboardPath() || "/dashboard";
+                        let redirectUrl = `${dashboardUrl}${postLoginPath}?auth=${tokenData}`;
 
                         if (pendingWebsite) {
                             redirectUrl += `&pendingWebsite=${encodeURIComponent(pendingWebsite)}`;

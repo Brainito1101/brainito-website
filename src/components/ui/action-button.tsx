@@ -8,12 +8,15 @@ import { AnimatedText, AnimatedIcon } from "@/components/ui/animated-button";
 interface ActionButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
     icon?: React.ReactNode;
+    /** Merged into the label span; use for responsive type (e.g. `text-sm md:text-[17px]`). */
+    textClassName?: string;
 }
 
 export function ActionButton({
     children,
     className,
     icon,
+    textClassName,
     ...props
 }: ActionButtonProps) {
     return (
@@ -40,13 +43,10 @@ export function ActionButton({
             {...props}
         >
             <AnimatedText
-                className="relative z-10"
-                style={{
-                    fontFamily: "var(--font-poppins), ui-sans-serif",
-                    fontSize: "17px",
-                    fontWeight: 400,
-                    letterSpacing: "0.2px",
-                }}
+                className={cn(
+                    "relative z-10 [font-family:var(--font-poppins),ui-sans-serif] font-normal tracking-[0.2px]",
+                    textClassName ?? "text-[17px]"
+                )}
             >
                 {children}
             </AnimatedText>

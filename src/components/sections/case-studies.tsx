@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Loader2 } from "lucide-react";
 import { AnimatedText } from "@/components/ui/animated-button";
 import { ActionButton } from "@/components/ui/action-button";
-import { caseStudies as staticCaseStudies, getCaseStudyBySlug } from "@/lib/case-studies-data";
+import { caseStudies as staticCaseStudies } from "@/lib/case-studies-data";
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 
@@ -101,9 +101,11 @@ export function CaseStudiesSection({
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {displayStudies.map((study, index) => {
-                            const detailHref = getCaseStudyBySlug(study.slug)
-                                ? `/case-studies/${study.slug}`
-                                : "/case-studies";
+                            // Detail pages resolve via API or static data; do not require a static-data match.
+                            const detailHref =
+                                study.slug && String(study.slug).trim() !== ""
+                                    ? `/case-studies/${encodeURIComponent(study.slug)}`
+                                    : "/case-studies";
                             return (
                             <motion.div
                                 key={study.slug ?? index}
@@ -143,53 +145,33 @@ export function CaseStudiesSection({
                                     </h3>
 
                                     <div className="mt-auto pt-1">
-                                        <Link href={detailHref} style={{ textDecoration: "none" }}>
-                                            <button
-                                                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden transition-all duration-300"
+                                        <Link
+                                            href={detailHref}
+                                            className="group relative inline-flex h-9 items-center justify-center gap-2 overflow-hidden rounded-full border-[1.5px] border-[#D1D5DB] bg-transparent px-4 pl-5 font-[family-name:var(--font-poppins),ui-sans-serif] text-[#374151] no-underline transition-colors duration-300 hover:border-[#71389A] hover:text-[#71389A]"
+                                        >
+                                            <AnimatedText
                                                 style={{
-                                                    height: "36px",
-                                                    padding: "0 16px 0 20px",
-                                                    borderRadius: "99px",
-                                                    border: "1.5px solid #D1D5DB",
-                                                    background: "transparent",
-                                                    cursor: "pointer",
                                                     fontFamily: "var(--font-poppins), ui-sans-serif",
-                                                }}
-                                                onMouseEnter={(e) => {
-                                                    e.currentTarget.style.border = "1.5px solid #71389A";
-                                                    e.currentTarget.style.color = "#71389A";
-                                                }}
-                                                onMouseLeave={(e) => {
-                                                    e.currentTarget.style.border = "1.5px solid #D1D5DB";
-                                                    e.currentTarget.style.color = "#374151";
+                                                    fontSize: "13px",
+                                                    fontWeight: 500,
+                                                    color: "inherit",
                                                 }}
                                             >
-                                                <AnimatedText
-                                                    style={{
-                                                        fontFamily: "var(--font-poppins), ui-sans-serif",
-                                                        fontSize: "13px",
-                                                        fontWeight: 500,
-                                                        color: "inherit",
-                                                    }}
-                                                >
-                                                    Read More
-                                                </AnimatedText>
-                                                <span
-                                                    className="relative rounded-full bg-white overflow-hidden block flex-shrink-0 transition-all duration-300 group-hover:bg-[#F3E8FF]"
-                                                    style={{
-                                                        width: "20px",
-                                                        height: "20px",
-                                                        boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
-                                                    }}
-                                                >
-                                                    <span className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:translate-x-full">
-                                                        <ArrowUpRight size={12} strokeWidth={2} style={{ color: "#6B7280" }} />
-                                                    </span>
-                                                    <span className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] -translate-x-full group-hover:translate-x-0">
-                                                        <ArrowUpRight size={12} strokeWidth={2} style={{ color: "#71389A" }} />
-                                                    </span>
+                                                Read More
+                                            </AnimatedText>
+                                            <span
+                                                className="relative block size-5 shrink-0 overflow-hidden rounded-full bg-white transition-all duration-300 group-hover:bg-[#F3E8FF]"
+                                                style={{
+                                                    boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
+                                                }}
+                                            >
+                                                <span className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:translate-x-full">
+                                                    <ArrowUpRight size={12} strokeWidth={2} style={{ color: "#6B7280" }} />
                                                 </span>
-                                            </button>
+                                                <span className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] -translate-x-full group-hover:translate-x-0">
+                                                    <ArrowUpRight size={12} strokeWidth={2} style={{ color: "#71389A" }} />
+                                                </span>
+                                            </span>
                                         </Link>
                                     </div>
                                 </div>

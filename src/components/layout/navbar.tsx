@@ -54,9 +54,9 @@ export function Navbar() {
                     <Link href="/" className="flex items-center select-none">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                            src="/brainito-logo.svg"
+                            src="/brainito.png"
                             alt="Brainito"
-                            style={{ height: "36px", width: "auto" }}
+                            className="h-[26px] w-auto md:h-[30px]"
                         />
                     </Link>
 
@@ -187,10 +187,10 @@ export function Navbar() {
                     {/* ── Mobile Toggle ─────────────────────────────────── */}
                     <button
                         onClick={() => setMobileOpen(!mobileOpen)}
-                        className="md:hidden flex items-center justify-center w-10 h-10 rounded-xl text-[#606266] hover:text-[#71389A] hover:bg-[#FAF5FF] transition-colors"
+                        className="md:hidden flex size-11 items-center justify-center rounded-xl text-[#606266] hover:text-[#71389A] hover:bg-[#FAF5FF] transition-colors"
                         aria-label="Toggle menu"
                     >
-                        {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                        {mobileOpen ? <X size={24} strokeWidth={2.25} /> : <Menu size={24} strokeWidth={2.25} />}
                     </button>
                 </nav>
             </div>

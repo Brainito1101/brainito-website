@@ -78,7 +78,6 @@ const defaultPlans: PlanCard[] = [
 ];
 
 export function PricingSection() {
-    const [isYearly, setIsYearly] = useState(true);
     const [processingPlan, setProcessingPlan] = useState<string | null>(null);
     const { user } = useAuth();
     const router = useRouter();
@@ -211,27 +210,6 @@ export function PricingSection() {
                         Choose the plan that&apos;s right for your business. All plans include core features.
                     </p>
                 </motion.div>
-
-                <div className="flex items-center justify-center gap-4 mb-14">
-                    <span className={cn("text-[14px]", !isYearly ? "text-[#101011] font-medium" : "text-[#606266]")}>
-                        Monthly
-                    </span>
-                    <button
-                        onClick={() => setIsYearly(!isYearly)}
-                        className="w-12 h-6 bg-[#f2e6ff] rounded-full flex items-center p-1 relative transition-colors duration-300 focus:outline-none"
-                        aria-label="Toggle annual billing"
-                    >
-                        <motion.div
-                            layout
-                            className="w-4 h-4 bg-[#71389A] rounded-full absolute"
-                            animate={{ left: isYearly ? "26px" : "4px" }}
-                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                        />
-                    </button>
-                    <span className={cn("text-[14px]", isYearly ? "text-[#101011]" : "text-[#606266]")}>
-                        yearly <span className="text-[#71389A] ml-1">30%off</span>
-                    </span>
-                </div>
 
                 <div className="grid md:grid-cols-3 gap-6 lg:gap-10 xl:gap-12 items-stretch">
                     {plans.map((plan, i) => (

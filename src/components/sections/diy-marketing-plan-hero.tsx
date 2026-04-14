@@ -25,176 +25,80 @@ export function DIYMarketingPlanHeroSection() {
     return (
         <section
             id="hero"
+            className="relative flex min-h-0 flex-col items-center justify-center overflow-hidden pt-[120px] pb-10 sm:pt-[130px] md:min-h-screen md:pb-[60px]"
             style={{
-                background: "linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 20%, #F4EEFF 50%, #FAF5FF 80%, #FFFFFF 100%)",
-                minHeight: "100vh",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                overflow: "hidden",
-                paddingTop: "80px",
-                paddingBottom: "60px",
+                background:
+                    "linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 20%, #F4EEFF 50%, #FAF5FF 80%, #FFFFFF 100%)",
             }}
         >
             {/* ── Centre content ───────────────────────────────────── */}
-            <div
-                style={{
-                    position: "relative",
-                    zIndex: 10,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    textAlign: "center",
-                    width: "100%",
-                    maxWidth: "1000px",
-                    padding: "0 24px",
-                }}
-            >
-                {/* Heading */}
+            <div className="relative z-10 flex w-full max-w-[1000px] flex-col items-center px-4 text-center sm:px-6">
+                {/* Heading — fluid type; slightly smaller than peak mobile size */}
                 <motion.h1
                     {...fadeUp(0.05)}
-                    style={{
-                        fontFamily: "var(--font-poppins), ui-sans-serif",
-                        fontSize: "clamp(32px, 4.5vw, 60px)",
-                        fontWeight: 500,
-                        lineHeight: 1.12,
-                        color: "#101011",
-                        marginBottom: "18px",
-                        letterSpacing: "-0.5px",
-                    }}
+                    className="mb-4 text-balance text-[clamp(36px,9.2vw,50px)] font-medium leading-[1.1] tracking-[-0.5px] text-[#101011] [font-family:var(--font-poppins),ui-sans-serif] md:mb-[18px] md:text-[clamp(34px,4.2vw,56px)]"
                 >
-                    Your Complete <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#71389A] to-[#CB84FF]">DIY Marketing Plan</span>
+                    Your Complete{" "}
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#71389A] to-[#CB84FF]">
+                        DIY Marketing Plan
+                    </span>
                 </motion.h1>
 
                 {/* Subtitle */}
                 <motion.p
                     {...fadeUp(0.15)}
-                    style={{
-                        fontFamily: "var(--font-poppins), ui-sans-serif",
-                        fontSize: "clamp(16px, 2.2vw, 23px)",
-                        fontWeight: 400,
-                        color: "#101011",
-                        lineHeight: 1.6,
-                        marginBottom: "46px",
-                        maxWidth: "700px",
-                    }}
+                    className="mb-9 max-w-[700px] text-pretty text-[clamp(17px,4.2vw,23px)] font-normal leading-[1.6] text-[#101011] [font-family:var(--font-poppins),ui-sans-serif] md:mb-11 md:text-[clamp(16px,2.2vw,23px)]"
                 >
                     A clear, step-by-step strategy that turns market understanding into focused, accountable action.
                 </motion.p>
 
-                {/* ── Input + Button Row ───────────────────────────── */}
+                {/* ── Input + Button — stack full-width on mobile ───── */}
                 <motion.div
                     {...fadeUp(0.25)}
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "12px",
-                        width: "100%",
-                        maxWidth: "680px",
-                        marginBottom: "14px",
-                        flexWrap: "wrap",
-                        justifyContent: "center",
-                    }}
+                    className="mb-2 flex w-full max-w-[680px] flex-col items-stretch gap-3 md:flex-row md:flex-wrap md:items-center md:justify-center"
                 >
                     {/* Website input */}
-                    <div
-                        style={{
-                            flex: "1 1 180px",
-                            minWidth: "160px",
-                            maxWidth: "240px",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "10px",
-                            height: "56px",
-                            borderRadius: "9999px",
-                            border: "2px solid #9B72C0",
-                            background: "rgba(255,255,255,0.92)",
-                            padding: "0 20px",
-                            boxShadow: "0 2px 12px rgba(113,56,154,0.07)",
-                        }}
-                    >
-                        <Globe
-                            size={16}
-                            style={{ color: "#9B72C0", flexShrink: 0 }}
-                        />
+                    <div className="flex h-14 w-full min-w-0 shrink-0 items-center gap-2.5 rounded-full border-2 border-[#9B72C0] bg-white/92 px-5 shadow-[0_2px_12px_rgba(113,56,154,0.07)] md:w-auto md:max-w-[270px] md:flex-[1_1_180px] md:min-w-[160px]">
+                        <Globe size={16} className="shrink-0 text-[#9B72C0]" />
                         <input
                             type="text"
                             placeholder="example.com"
                             value={website}
                             onChange={(e) => setWebsite(e.target.value)}
-                            style={{
-                                flex: 1,
-                                border: "none",
-                                outline: "none",
-                                background: "transparent",
-                                fontFamily: "var(--font-poppins), ui-sans-serif",
-                                fontSize: "15px",
-                                color: "#101011",
-                                fontWeight: 400,
-                            }}
+                            className="min-w-0 flex-1 border-0 bg-transparent text-[15px] font-normal text-[#101011] outline-none [font-family:var(--font-poppins),ui-sans-serif] placeholder:text-[#606266]/70"
                         />
                     </div>
 
                     {/* Email input */}
-                    <div
-                        style={{
-                            flex: "1 1 180px",
-                            minWidth: "160px",
-                            maxWidth: "245px",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "10px",
-                            height: "56px",
-                            borderRadius: "9999px",
-                            border: "2px solid #9B72C0",
-                            background: "rgba(255,255,255,0.92)",
-                            padding: "0 20px",
-                            boxShadow: "0 2px 12px rgba(113,56,154,0.07)",
-                        }}
-                    >
-                        <Mail
-                            size={16}
-                            style={{ color: "#9B72C0", flexShrink: 0 }}
-                        />
+                    <div className="flex h-14 w-full min-w-0 shrink-0 items-center gap-2.5 rounded-full border-2 border-[#9B72C0] bg-white/92 px-5 shadow-[0_2px_12px_rgba(113,56,154,0.07)] md:w-auto md:max-w-[280px] md:flex-[1_1_180px] md:min-w-[160px]">
+                        <Mail size={16} className="shrink-0 text-[#9B72C0]" />
                         <input
                             type="email"
                             placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            style={{
-                                flex: 1,
-                                border: "none",
-                                outline: "none",
-                                background: "transparent",
-                                fontFamily: "var(--font-poppins), ui-sans-serif",
-                                fontSize: "15px",
-                                color: "#101011",
-                                fontWeight: 400,
-                            }}
+                            className="min-w-0 flex-1 border-0 bg-transparent text-[15px] font-normal text-[#101011] outline-none [font-family:var(--font-poppins),ui-sans-serif] placeholder:text-[#606266]/70"
                         />
                     </div>
 
-                    {/* Get Started button */}
-                    <div style={{ flexShrink: 0, position: "relative", zIndex: 1 }}>
+                    <div className="relative z-[1] w-full shrink-0 md:w-auto">
                         <ActionButton
                             type="button"
                             icon={<ArrowUpRight size={18} />}
                             onClick={handleSubmit}
                             disabled={loading}
                             aria-busy={loading}
-                            className="disabled:opacity-60 disabled:cursor-wait"
+                            className="w-full min-w-0 disabled:cursor-wait disabled:opacity-60 md:min-w-[180px] md:w-auto"
                         >
                             {loading ? "Redirecting…" : "Create My Plan"}
                         </ActionButton>
                     </div>
 
                     {/* Field Errors */}
-                    <div className="w-full flex flex-col items-center gap-1 mt-2">
-                        {errors.website && <p className="text-red-500 text-xs">{errors.website}</p>}
-                        {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
-                        {errors.general && <p className="text-red-500 text-xs">{errors.general}</p>}
+                    <div className="mt-1 flex w-full flex-col items-center gap-1 md:mt-2">
+                        {errors.website && <p className="text-xs text-red-500">{errors.website}</p>}
+                        {errors.email && <p className="text-xs text-red-500">{errors.email}</p>}
+                        {errors.general && <p className="text-xs text-red-500">{errors.general}</p>}
                     </div>
                 </motion.div>
             </div>

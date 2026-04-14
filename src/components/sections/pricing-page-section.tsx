@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/section";
 import { AnimatedText } from "@/components/ui/animated-button";
@@ -81,8 +80,6 @@ const plans = [
 ];
 
 export function PricingPageSection() {
-    const [isYearly, setIsYearly] = useState(false);
-
     return (
         <section className="py-24 bg-white relative min-h-screen">
             <Container className="max-w-[1400px]">
@@ -103,28 +100,6 @@ export function PricingPageSection() {
                         Choose the perfect plan for your marketing needs. Start free or scale with our premium options.
                     </p>
                 </motion.div>
-
-                {/* Toggle */}
-                <div className="flex items-center justify-center gap-4 mb-14">
-                    <span className={cn("text-[15px]", !isYearly ? "text-[#101011] font-medium" : "text-[#606266]")}>
-                        Monthly
-                    </span>
-                    <button
-                        onClick={() => setIsYearly(!isYearly)}
-                        className="w-[52px] h-[28px] bg-white border border-gray-200 shadow-sm rounded-full flex items-center p-1 relative transition-colors duration-300 focus:outline-none"
-                        aria-label="Toggle annual billing"
-                    >
-                        <motion.div
-                            layout
-                            className="w-[20px] h-[20px] bg-[#71389A] rounded-full absolute shadow-sm"
-                            animate={{ left: isYearly ? "28px" : "4px" }}
-                            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                        />
-                    </button>
-                    <span className={cn("text-[15px]", isYearly ? "text-[#101011] font-medium" : "text-[#606266]")}>
-                        yearly <span className="text-[#71389A] font-medium ml-1">30%off</span>
-                    </span>
-                </div>
 
                 {/* Plans Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
