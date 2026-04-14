@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Script from "next/script";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -150,6 +151,7 @@ export default function RootLayout({
             <Toaster position="top-center" richColors />
           </ThemeProvider>
         </AuthProvider>
+        <Analytics />
         {/* Meta Pixel noscript fallbacks */}
         <noscript>
           <img
