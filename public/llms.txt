@@ -1,0 +1,60 @@
+# Brainito
+
+> Brainito (brainito.com) is the marketing website for Brainito — an AI-assisted marketing platform that offers free website marketing audits, DIY marketing plans, subscription pricing, and options to hire a dedicated marketer. The product experience continues in the authenticated web app (dashboard) at app.brainito.com.
+
+## What this site is for
+
+- Public marketing pages, lead capture, pricing, case studies, blog, help, contact, and legal policies.
+- Users can request a free marketing audit from the homepage or DIY marketing plan flow; authenticated users use the same analysis endpoints with their session.
+- Login is magic-link or Google OAuth; after sign-in, users are typically redirected to the dashboard app.
+
+## Primary URLs (marketing)
+
+- https://brainito.com/ — Homepage; free marketing audit form (guest or signed-in).
+- https://brainito.com/diy-marketing-plan — DIY marketing plan landing and audit flow.
+- https://brainito.com/hire-marketer — Hire a marketer / fractional marketing lead capture.
+- https://brainito.com/pricing — Plans loaded from the API; Stripe checkout for paid plans when signed in.
+- https://brainito.com/case-studies — Case study index (content often loaded from the API).
+- https://brainito.com/blog — Blog index and articles (static blog data in this codebase).
+- https://brainito.com/about — About the company.
+- https://brainito.com/contact — Contact form (submitted to the backend API).
+- https://brainito.com/help — Help / support hub.
+
+## Auth and session utilities (avoid indexing as content)
+
+- https://brainito.com/auth/google/callback — Google OAuth callback handler.
+- https://brainito.com/auth/magic-link/verify — Magic link verification.
+- https://brainito.com/auth/logout — Clears site storage and completes logout sync flow.
+- https://brainito.com/logout-sync — Cross-domain logout sync entry point (e.g. from the dashboard).
+
+## Legal and policy
+
+- https://brainito.com/privacy-policy
+- https://brainito.com/terms-of-service
+- https://brainito.com/refund-payment-terms
+- https://brainito.com/cookie-policy
+- https://brainito.com/data-processing-agreement-dpa
+- https://brainito.com/privacy-policy-for-california-residents
+- https://brainito.com/acceptable-use-anti-spam-policy
+- https://brainito.com/acceptance-of-terms
+- https://brainito.com/other-essential-policies
+- https://brainito.com/data-cookie-policy
+
+## Machine-readable discovery
+
+- https://brainito.com/sitemap.xml — Sitemap (includes static routes, blog posts, and case studies when the API is available at build or request time).
+- https://brainito.com/robots.txt — Crawl rules.
+
+## Product app (not this repo)
+
+- The customer dashboard and authenticated product UI live on the separate app host (typically https://app.brainito.com). This marketing site links there for login, dashboard, settings, and post–audit redirects.
+
+## Contact
+
+- General / support: support@brainito.com (as shown in the site footer).
+
+## Notes for assistants
+
+- Prefer citing live page URLs from brainito.com for user-facing claims; legal text is authoritative on the policy pages above.
+- Pricing amounts and plan names on the marketing site may be backed by `/payments/plans/` on the API; do not invent current prices if they are not on the page or in official materials.
+- Case study slugs and titles are dynamic; use `/case-studies` or the sitemap for an up-to-date list.
