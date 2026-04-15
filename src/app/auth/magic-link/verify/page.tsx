@@ -56,11 +56,20 @@ function VerifyContent() {
 
                         const pendingWebsite = searchParams.get('pendingWebsite');
                         const dashboardUrl = process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://app.brainito.com";
-                        const postLoginPath = consumePendingPostLoginDashboardPath() || "/dashboard";
+                        const postLoginPath = consumePendingPostLoginDashboardPath() || "/dashboard/marketing-health-score";
                         let redirectUrl = `${dashboardUrl}${postLoginPath}?auth=${tokenData}`;
 
                         if (pendingWebsite) {
-                            redirectUrl += `&pendingWebsite=${encodeURIComponent(pendingWebsite)}`;
+                            try {
+                                const raw = pendingWebsite.trim();
+                                const u = new URL(raw.includes("://") ? raw : `https://${raw}`);
+                                const host = u.hostname.replace(/^www\./i, "");
+                                if (host) {
+                                    redirectUrl += `&pending_domain=${encodeURIComponent(host)}`;
+                                }
+                            } catch {
+                                /* ignore */
+                            }
                         }
 
                         window.location.href = redirectUrl;

@@ -16,7 +16,7 @@ const categories = [
         questions: [
             {
                 question: "How do I get started with Brainito?",
-                answer: "Simply enter your website URL on our homepage or DIY Marketing Plan page, and our AI will analyze your website to create a personalized marketing strategy."
+                answer: "Simply enter your website URL on our homepage to run a free audit and open your Marketing Health Score in the dashboard."
             },
             {
                 question: "What information do I need to provide?",
@@ -34,24 +34,24 @@ const categories = [
     },
     {
         icon: FileText,
-        title: "DIY Marketing Plan",
-        description: "Help with your marketing plan",
+        title: "Marketing Health Score",
+        description: "Help with your marketing health scan",
         questions: [
             {
-                question: "What's included in the DIY Marketing Plan?",
-                answer: "The DIY Marketing Plan includes a comprehensive 9-module strategy covering website analysis, competitor research, content calendar, SEO recommendations, social media strategy, and more."
+                question: "What does the Marketing Health Score include?",
+                answer: "It is a multi-signal audit across technical SEO, on-page SEO, tracking, trust, SERP visibility, brand presence, and social signals—rolled into one score with actionable recommendations."
             },
             {
-                question: "Can I customize my marketing plan?",
-                answer: "Yes, the DIY plan provides recommendations tailored to your business. You can prioritize different modules and adapt strategies based on your specific goals and resources."
+                question: "Where do I run a new scan?",
+                answer: "Open the dashboard Marketing Health Score page, enter a domain, and start a scan. You can track progress live until the report completes."
             },
             {
-                question: "How often is the plan updated?",
-                answer: "Your marketing plan is continuously updated with fresh insights. You can also request a re-analysis anytime to reflect changes in your business or market conditions."
+                question: "How often should I rescan?",
+                answer: "Any time you ship major site changes, new products, or a new domain. Many teams rescan quarterly to benchmark improvements."
             },
             {
-                question: "Do I get access to templates and tools?",
-                answer: "Absolutely! The DIY plan comes with ready-to-use templates for content calendars, social media posts, email campaigns, and more to help you execute your strategy efficiently."
+                question: "Do I need an account?",
+                answer: "You can preview results in guest mode for some flows; saving history and advanced sections works best when you sign in."
             }
         ]
     },

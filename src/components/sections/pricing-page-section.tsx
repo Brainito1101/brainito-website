@@ -24,7 +24,7 @@ const plans = [
     },
     {
         id: "diy",
-        name: "DIY Marketing Plan",
+        name: "Marketing Health & Audit",
         price: "89",
         period: "month",
         description: "For teams ready\nto execute",

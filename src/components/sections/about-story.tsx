@@ -27,12 +27,12 @@ const section1Items: StoryItem[] = [
         yearTitle: "2018 — The Birth of Clarity",
         subtitle: "Turning Failure into Insight",
         description:
-            "After the startup closed, the focus shifted to helping founders gain clarity before spending on marketing. This work became the foundation of the DIY Marketing Plan.",
+            "After the startup closed, the focus shifted to helping founders gain clarity before spending on marketing. This work became the foundation of Brainito's audit-first approach.",
         image: "/vectors/15.svg",
     },
     {
         id: 3,
-        yearTitle: "2019 – 2023 — Scaling the DIY Approach",
+        yearTitle: "2019 – 2023 — Scaling the audit-first approach",
         subtitle: "Helping Businesses Grow with Direction",
         description:
             "A small team helped more than 1,800 businesses create clear marketing plans they could execute without guesswork or wasted budgets.",

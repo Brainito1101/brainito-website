@@ -8,7 +8,7 @@ import Image from "next/image";
 const steps = [
     {
         number: "Step 1",
-        title: "Get Your DIY Marketing Plan",
+        title: "Get Your Marketing Health Score",
         description:
             "AI audits your website and delivers a ready-to-execute 30-day strategy with actionable insights.",
         image: "/vectors/5.svg",

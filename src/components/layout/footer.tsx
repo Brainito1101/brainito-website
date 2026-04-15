@@ -11,6 +11,9 @@ const XIcon = ({ size = 16, className }: { size?: number, className?: string }) 
     </svg>
 );
 
+const DASHBOARD_APP =
+    (process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://app.brainito.com").replace(/\/$/, "");
+
 const socialLinks = [
     { icon: Facebook, href: "https://www.facebook.com/brainitodotcom", label: "Facebook" },
     { icon: Instagram, href: "https://www.instagram.com/brainito_com", label: "Instagram" },

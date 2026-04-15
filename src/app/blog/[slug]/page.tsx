@@ -223,7 +223,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                             Get your personalized AI-powered marketing strategy today and start growing your business with data-driven clarity.
                         </p>
                         <Link 
-                            href="/diy-marketing-plan"
+                            href="/pricing"
                             className="inline-flex items-center justify-center px-10 h-[64px] rounded-full bg-gradient-to-r from-[#71389A] to-[#ba76ec] text-white font-bold text-[18px] hover:brightness-110 transition-all shadow-2xl shadow-purple-500/20 group"
                         >
                             Get Your Marketing Plan <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />

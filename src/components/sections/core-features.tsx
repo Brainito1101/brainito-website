@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/section";
 const features = [
     {
         subtitle: "Data-Driven Growth Insights",
-        title: "Build <span style=\"color:#71389A;font-weight:500\">DIY</span> Marketing Plan",
+        title: "Run your <span style=\"color:#71389A;font-weight:500\">Marketing Health Score</span>",
         description:
             "Create your comprehensive marketing strategy with our guided templates and execution roadmap.",
         points: [

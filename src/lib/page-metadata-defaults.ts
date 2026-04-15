@@ -83,13 +83,13 @@ type StaticSeoEntry = {
  */
 export const PAGE_METADATA_DEFAULTS: Record<string, StaticSeoEntry> = {
     "/": {
-        title: "Free AI audit, DIY plans & hands-on marketing",
+        title: "Free AI audit, marketing health score & hands-on marketing",
         description:
-            "Get a free AI-powered marketing audit, DIY marketing plans, and dedicated marketing execution. Brainito turns clarity into measurable growth.",
+            "Get a free AI-powered marketing audit, a full marketing health score scan, and dedicated marketing execution. Brainito turns clarity into measurable growth.",
         keywords: [
             "marketing audit",
             "free marketing report",
-            "DIY marketing plan",
+            "marketing health score",
             "remote marketing manager",
             "growth marketing",
             "Brainito",
@@ -108,9 +108,9 @@ export const PAGE_METADATA_DEFAULTS: Record<string, StaticSeoEntry> = {
         keywords: ["contact Brainito", "Brainito support", "marketing help"],
     },
     "/pricing": {
-        title: "Pricing for audits, DIY plans & marketer hire",
+        title: "Pricing for audits, health scans & marketer hire",
         description:
-            "Explore Brainito plans for audits, DIY marketing plans, and hands-on marketing management. Transparent pricing built for growing businesses.",
+            "Explore Brainito plans for audits, marketing health scans, and hands-on marketing management. Transparent pricing built for growing businesses.",
         keywords: ["Brainito pricing", "marketing plans pricing", "audit pricing"],
     },
     "/blog": {
@@ -124,12 +124,6 @@ export const PAGE_METADATA_DEFAULTS: Record<string, StaticSeoEntry> = {
         description:
             "See how teams use Brainito to sharpen strategy, improve execution, and track outcomes across industries.",
         keywords: ["marketing case studies", "Brainito results", "client stories"],
-    },
-    "/diy-marketing-plan": {
-        title: "DIY marketing plan: clear steps without guesswork",
-        description:
-            "Build a clear, step-by-step marketing plan you can execute without guesswork. Start with your site and email to generate your DIY plan.",
-        keywords: ["DIY marketing plan", "marketing plan template", "Brainito DIY plan"],
     },
     "/hire-marketer": {
         title: "Hire a remote marketing manager who owns results",
