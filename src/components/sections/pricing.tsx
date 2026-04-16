@@ -194,7 +194,7 @@ export function PricingSection() {
     };
 
     return (
-        <section id="pricing" className="py-24 bg-white relative">
+        <section id="pricing" className="scroll-mt-24 py-24 bg-white relative md:scroll-mt-28">
             <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
             <Container className="max-w-[1400px]">
                 <motion.div
