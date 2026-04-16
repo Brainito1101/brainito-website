@@ -227,10 +227,19 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             }
         }
 
+        // Notify any other open website tabs to also clear their state
+        try {
+            const logoutChannel = new BroadcastChannel('brainito_logout');
+            logoutChannel.postMessage('FORCE_LOGOUT');
+            logoutChannel.close();
+        } catch (_e) { /* ignore if BroadcastChannel not supported */ }
+
         localStorage.clear();
         sessionStorage.clear();
         setUser(null);
 
+        // Navigate to the dashboard's LogoutSync page so it clears the dashboard's
+        // localStorage too (picked up by the `storage` event listener in dashboard tabs)
         window.location.href = `${DASHBOARD_URL}/logout-sync?source=website`;
     };
 
