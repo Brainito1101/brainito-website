@@ -71,6 +71,7 @@ export function PricingClient() {
     const [plans, setPlans] = useState<Plan[]>([]);
     const [loading, setLoading] = useState(true);
     const [processingPlan, setProcessingPlan] = useState<string | null>(null);
+    const [isYearly, setIsYearly] = useState(false);
     const [showAuthModal, setShowAuthModal] = useState(false);
 
     useEffect(() => {
@@ -166,8 +167,9 @@ export function PricingClient() {
         if (plan.priceMonthly === null) return { label: "Custom", suffix: "/ based on scope" };
         if (plan.priceMonthly === 0) return { label: "$0", suffix: "/month" };
         const monthly = plan.priceMonthly;
+        const displayed = isYearly ? Math.round(monthly * 0.7) : monthly;
         return {
-            label: `$${formatMoney(monthly)}`,
+            label: `$${formatMoney(displayed)}`,
             suffix: "/month",
         };
     };
@@ -252,6 +254,28 @@ export function PricingClient() {
                     <p className="text-[17px] text-[#606266] max-w-xl">
                         Choose the perfect plan for your marketing needs. Start free or scale with our premium options.
                     </p>
+
+                    {/* Toggle */}
+                    <div className="flex items-center justify-center gap-4 mt-10">
+                        <span className={cn("text-[14px]", !isYearly ? "text-[#101011] font-medium" : "text-[#606266]")}>
+                            Monthly
+                        </span>
+                        <button
+                            onClick={() => setIsYearly((v) => !v)}
+                            className="w-12 h-6 bg-[#f2e6ff] rounded-full flex items-center p-1 relative transition-colors duration-300 focus:outline-none"
+                            aria-label="Toggle annual billing"
+                        >
+                            <motion.div
+                                layout
+                                className="w-4 h-4 bg-[#71389A] rounded-full absolute"
+                                animate={{ left: isYearly ? "26px" : "4px" }}
+                                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                            />
+                        </button>
+                        <span className={cn("text-[14px]", isYearly ? "text-[#101011] font-medium" : "text-[#606266]")}>
+                            yearly <span className="text-[#71389A] ml-1">30%off</span>
+                        </span>
+                    </div>
                 </Container>
             </section>
 
