@@ -186,6 +186,26 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (user.profile_picture) localStorage.setItem("profile_picture", user.profile_picture);
 
         setUser(user);
+
+        // Seed the dashboard's localStorage via hidden iframe so both apps share the same session
+        try {
+            const authPayload = encodeURIComponent(JSON.stringify({
+                access: tokens.access,
+                refresh: tokens.refresh,
+                email: user.email,
+                username: user.username,
+                profile_picture: user.profile_picture || "",
+            }));
+            const iframe = document.createElement('iframe');
+            iframe.style.cssText = 'display:none;width:0;height:0;border:0;position:absolute;';
+            iframe.src = `${DASHBOARD_URL}/?auth=${authPayload}`;
+            document.body.appendChild(iframe);
+            setTimeout(() => {
+                if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+            }, 5000);
+        } catch (_e) {
+            // Non-critical — dashboard will pick up tokens on next navigation
+        }
     };
 
     const logout = async () => {
