@@ -32,10 +32,10 @@ export function Footer() {
                     <div className="lg:col-span-4 flex flex-col">
                         <Link href="/" className="mb-6 inline-block">
                             <Image
-                                src="/brainito-logo.svg"
+                                src="/brainito.png"
                                 alt="Brainito"
-                                width={230}
-                                height={55}
+                                width={210}
+                                height={50}
                                 className="h-9 w-auto max-w-[200px] object-contain object-left mix-blend-multiply md:h-10"
                             />
                         </Link>
