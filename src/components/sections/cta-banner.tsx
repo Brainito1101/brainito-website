@@ -7,13 +7,12 @@ import { AnimatedText, AnimatedIcon } from "@/components/ui/animated-button";
 import { Container } from "@/components/ui/section";
 import { useAuth } from "@/contexts/auth-context";
 import { AuthModal } from "@/components/sections/auth-modal";
-import { getDashboardEntryUrl } from "@/lib/dashboard-entry";
+import { getDashboardEntryUrl, MARKETING_HEALTH_SCORE_PATH } from "@/lib/dashboard-entry";
 import { setPendingPostLoginDashboardPath } from "@/lib/post-login-redirect";
 
 const marqueeText = "BRAINITO INC • BRAINITO INC • BRAINITO INC • BRAINITO INC • BRAINITO INC • ";
 
 const CALENDLY_GROWTH_SESSION = "https://calendly.com/brainito/growth-session";
-const MARKETING_HEALTH_SCORE_PATH = "/dashboard/marketing-health-score";
 
 export function CTABannerSection() {
     const { user, loading: authLoading } = useAuth();

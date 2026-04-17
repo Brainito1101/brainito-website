@@ -8,7 +8,7 @@ import { ActionButton } from "@/components/ui/action-button";
 import { useAnalysis } from "@/hooks/use-analysis";
 import { useAuth } from "@/contexts/auth-context";
 import { AuthModal } from "@/components/sections/auth-modal";
-import { getDashboardEntryUrl } from "@/lib/dashboard-entry";
+import { getDashboardEntryUrl, MARKETING_HEALTH_SCORE_PATH } from "@/lib/dashboard-entry";
 
 const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 28 },
@@ -31,7 +31,7 @@ export function HeroSection() {
     const handleLoginClick = () => {
         if (authLoading) return;
         if (user) {
-            window.location.href = getDashboardEntryUrl("/dashboard");
+            window.location.href = getDashboardEntryUrl(MARKETING_HEALTH_SCORE_PATH);
         } else {
             setShowAuthModal(true);
         }

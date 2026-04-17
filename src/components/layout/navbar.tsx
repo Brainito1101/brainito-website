@@ -3,18 +3,18 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, LogOut, LayoutDashboard, Settings } from "lucide-react";
+import { Menu, X, LayoutDashboard, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatedText } from "@/components/ui/animated-button";
 import { AuthModal } from "@/components/sections/auth-modal";
 import { useAuth } from "@/contexts/auth-context";
-import { getDashboardEntryUrl } from "@/lib/dashboard-entry";
+import { getDashboardEntryUrl, MARKETING_HEALTH_SCORE_PATH } from "@/lib/dashboard-entry";
 
 export function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [showAuthModal, setShowAuthModal] = useState(false);
-    const { user, loading, logout } = useAuth();
+    const { user, loading } = useAuth();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 10);
@@ -35,7 +35,7 @@ export function Navbar() {
     const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL || 'https://app.brainito.com';
 
     const goToDashboard = () => {
-        window.location.href = getDashboardEntryUrl("/dashboard");
+        window.location.href = getDashboardEntryUrl(MARKETING_HEALTH_SCORE_PATH);
     };
 
     return (
@@ -102,49 +102,39 @@ export function Navbar() {
                                 <AnimatedText>Login</AnimatedText>
                             </button>
                         ) : (
-                            <div className="flex items-center gap-2">
-                                <button
-                                    type="button"
-                                    onClick={goToDashboard}
-                                    className="group"
-                                    style={{
-                                        display: "inline-flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        gap: "8px",
-                                        height: "38px",
-                                        paddingLeft: "20px",
-                                        paddingRight: "20px",
-                                        borderRadius: "9999px",
-                                        border: "2px solid #71389A",
-                                        background: "#FAF5FF",
-                                        color: "#71389A",
-                                        fontSize: "14px",
-                                        fontWeight: 500,
-                                        fontFamily: "var(--font-poppins), ui-sans-serif",
-                                        cursor: "pointer",
-                                        transition: "all 0.2s ease",
-                                        whiteSpace: "nowrap",
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.background = "#F4EEFF";
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.background = "#FAF5FF";
-                                    }}
-                                >
-                                    <LayoutDashboard size={18} />
-                                    <AnimatedText>Go to Dashboard</AnimatedText>
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => logout()}
-                                    className="text-sm text-[#606266] hover:text-[#71389A] px-2 py-1 underline-offset-2 hover:underline"
-                                    style={{ fontFamily: "var(--font-poppins), ui-sans-serif" }}
-                                >
-                                    Log out
-                                </button>
-                            </div>
+                            <button
+                                type="button"
+                                onClick={goToDashboard}
+                                className="group"
+                                style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    gap: "8px",
+                                    height: "38px",
+                                    paddingLeft: "20px",
+                                    paddingRight: "20px",
+                                    borderRadius: "9999px",
+                                    border: "2px solid #71389A",
+                                    background: "#FAF5FF",
+                                    color: "#71389A",
+                                    fontSize: "14px",
+                                    fontWeight: 500,
+                                    fontFamily: "var(--font-poppins), ui-sans-serif",
+                                    cursor: "pointer",
+                                    transition: "all 0.2s ease",
+                                    whiteSpace: "nowrap",
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.background = "#F4EEFF";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.background = "#FAF5FF";
+                                }}
+                            >
+                                <LayoutDashboard size={18} />
+                                <AnimatedText>Go to Dashboard</AnimatedText>
+                            </button>
                         )}
 
                         {/* Hire Marketer — gradient purple pill with glassy sheen */}
@@ -263,16 +253,6 @@ export function Navbar() {
                                                 <Settings size={16} />
                                                 Edit profile
                                             </a>
-                                            <button
-                                                onClick={() => {
-                                                    logout();
-                                                    setMobileOpen(false);
-                                                }}
-                                                className="flex items-center justify-center gap-2 h-10 rounded-full border-2 border-red-200 text-red-500 font-medium"
-                                            >
-                                                <LogOut size={16} />
-                                                Logout
-                                            </button>
                                         </>
                                     )}
                                 </>

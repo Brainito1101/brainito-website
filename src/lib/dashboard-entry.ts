@@ -1,6 +1,9 @@
 const dashboardBase = () =>
     (typeof process !== "undefined" && process.env.NEXT_PUBLIC_DASHBOARD_URL) || "https://app.brainito.com";
 
+/** Default post-login / “go to app” destination: Marketing Health Score (latest scan is resolved there). */
+export const MARKETING_HEALTH_SCORE_PATH = "/dashboard/marketing-health-score";
+
 /**
  * Opens the dashboard with ?auth= when website localStorage has JWTs, so the dashboard
  * (different origin/port) can hydrate the session via AuthContext.
