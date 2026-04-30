@@ -164,10 +164,9 @@ export function HeroSection() {
                             type="button"
                             onClick={handleSubmit}
                             disabled={analysisLoading}
-                            aria-busy={analysisLoading}
-                            className="w-full min-w-0 disabled:cursor-wait disabled:opacity-60 md:min-w-[160px] md:w-auto"
+                            className="w-full min-w-0 disabled:opacity-60 md:min-w-[160px] md:w-auto"
                         >
-                            {analysisLoading ? "Redirecting…" : "Get Started"}
+                            Get Started
                         </ActionButton>
                         {errors.general && <p className="text-red-500 text-xs mt-2 text-center absolute top-full left-0 right-0">{errors.general}</p>}
 
