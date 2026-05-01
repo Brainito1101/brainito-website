@@ -220,7 +220,7 @@ export function HeroSection() {
                     className="inline-flex max-w-full flex-wrap items-center justify-center gap-1.5 rounded-full border-[1.5px] border-[#c8b8e0] bg-white/70 px-4 py-2 text-center text-[13px] font-normal text-[#101011] [font-family:var(--font-poppins),ui-sans-serif] backdrop-blur-[6px] md:h-[42px] md:max-w-none md:flex-nowrap md:gap-1.5 md:whitespace-nowrap md:px-[22px] md:py-0"
                 >
                     Trusted by{" "}
-                    <span style={{ color: "#71389A", fontWeight: 600 }}>1700+</span>{" "}
+                    <span style={{ color: "#71389A", fontWeight: 600 }}>1800+</span>{" "}
                     startups and global brands
                 </motion.div>
             </div>
