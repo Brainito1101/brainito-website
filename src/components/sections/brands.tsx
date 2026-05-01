@@ -3,18 +3,31 @@
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/section";
 
-const BRAND_LOGO_URLS = [
+// Default-size logos (52px)
+const DEFAULT_LOGO_URLS = [
     "https://res.cloudinary.com/dspez5cnn/image/upload/v1774610284/logo1_euknfl.png",
-    "https://res.cloudinary.com/dspez5cnn/image/upload/v1774606987/logo2_z6wygy.png",
     "https://res.cloudinary.com/dspez5cnn/image/upload/v1774610284/logo2_dfd8ap.png",
     "https://res.cloudinary.com/dspez5cnn/image/upload/v1774610284/logo3_nxnp2e.png",
-    "https://res.cloudinary.com/dspez5cnn/image/upload/v1774610283/logo4_yxayt2.png",
-    "https://res.cloudinary.com/dspez5cnn/image/upload/v1774610283/logo5_ovqgjy.png",
     "https://res.cloudinary.com/dspez5cnn/image/upload/v1774610283/logo6_uwceqg.png",
-    "https://res.cloudinary.com/dspez5cnn/image/upload/v1774610283/logo7_dpqpfl.png",
     "https://res.cloudinary.com/dspez5cnn/image/upload/v1774610283/logo8_r2gurc.png",
     "https://res.cloudinary.com/dspez5cnn/image/upload/v1774610283/logo9_qq07bs.png",
-] as const;
+    "https://res.cloudinary.com/dspez5cnn/image/upload/v1777468766/Mask_group_zp3gkg.png",
+];
+
+// Larger logos (67px — 15px taller than default)
+const LARGER_LOGO_URLS = [
+    "https://res.cloudinary.com/dspez5cnn/image/upload/v1777468566/logo01_r0j0ke.png",
+    "https://res.cloudinary.com/dspez5cnn/image/upload/v1777468566/logo02_p9ab7n.png",
+    "https://res.cloudinary.com/dspez5cnn/image/upload/v1777468565/logo03_rea5hu.png",
+    "https://res.cloudinary.com/dspez5cnn/image/upload/v1777470837/Group_1059_ktoakc.png",
+    "https://res.cloudinary.com/dspez5cnn/image/upload/v1777469253/Mask_group_rbufir.png",
+];
+
+// Combined list with size flag for the marquee
+const ALL_LOGOS = [
+    ...DEFAULT_LOGO_URLS.map((src) => ({ src, large: false })),
+    ...LARGER_LOGO_URLS.map((src) => ({ src, large: true })),
+];
 
 export function BrandsSection() {
     return (
@@ -58,7 +71,7 @@ export function BrandsSection() {
                                     paddingRight: "80px",
                                 }}
                             >
-                                {BRAND_LOGO_URLS.map((src, i) => (
+                                {ALL_LOGOS.map(({ src, large }, i) => (
                                     <img
                                         key={`${copyIdx}-${i}-${src}`}
                                         src={src}
@@ -66,9 +79,9 @@ export function BrandsSection() {
                                         loading="lazy"
                                         decoding="async"
                                         style={{
-                                            height: "52px",
+                                            height: large ? "67px" : "52px",
                                             width: "auto",
-                                            maxWidth: "200px",
+                                            maxWidth: "250px",
                                             objectFit: "contain",
                                             opacity: 0.9,
                                         }}
