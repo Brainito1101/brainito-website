@@ -58,7 +58,7 @@ export function HowItWorksSection2() {
             {/* Ambient Background Glow for Step 1 */}
             <div className="hidden md:block absolute top-[25%] -right-[15%] w-[800px] h-[800px] rounded-full bg-gradient-to-br from-[#CB84FF] to-[#71389A] opacity-[0.06] blur-[100px] pointer-events-none z-0" />
 
-            <Container>
+            <Container> 
                 {/* Header */}
                 <div className="text-center mb-24 md:mb-32">
                     <motion.h2
