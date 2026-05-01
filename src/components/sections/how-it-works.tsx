@@ -8,20 +8,27 @@ import Image from "next/image";
 const steps = [
     {
         number: "Step 1",
-        title: "Get Your Marketing Health Score",
+        title: "Get Your Marketing Audit Score",
         description:
             "AI audits your website and delivers a ready-to-execute 30-day strategy with actionable insights.",
         image: "/vectors/5.svg",
     },
     {
         number: "Step 2",
-        title: "Hire a Marketer",
+        title: "DIY Marketing Plan",
         description:
-            "Work with a dedicated marketer who turns your strategy into measurable execution.",
-        image: "/vectors/7.svg",
+            "Create a clear plan tailored to your goals. Define your audience, choose the right channels, and refine based on performance.",
+        image: "/vectors/diy.svg",
     },
     {
         number: "Step 3",
+        title: "Hire a Marketer",
+        description:
+            "Connect with a marketing expert who turns your strategy into action. They manage campaigns, optimize performance, and deliver measurable results.",
+        image: "/vectors/7.svg",
+    },
+        {
+        number: "Step 4",
         title: "Build Your Growth Engine",
         description:
             "Scale ads, content, funnels, and reporting like a pro inside Brainito.",
